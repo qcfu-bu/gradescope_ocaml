@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+cp /autograder/submission/*.ml /autograder/source/bin/sum.ml
+cd /autograder/source
+
+eval `opam config env --safe`
+
+dune build bin/main.exe --profile release
+if [ $? -eq 0 ]; then
+    dune exec bin/main.exe --profile release
+else
+    echo "{ \"score\" : 0, \"stdout_visibility\" : \"visible\" }" > /autograder/results/results.json
+fi

@@ -1,0 +1,8 @@
+(** @canonical Gradescope.Gradescope_j *)
+module Gradescope_j = Gradescope__Gradescope_j
+
+(** @canonical Gradescope.Gradescope_t *)
+module Gradescope_t = Gradescope__Gradescope_t
+
+(** @canonical Gradescope.Util *)
+module Util = Gradescope__Util

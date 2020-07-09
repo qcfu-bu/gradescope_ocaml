@@ -1,0 +1,5 @@
+(** @canonical Dune__exe.Main *)
+module Main = Dune__exe__Main
+
+(** @canonical Dune__exe.Sum *)
+module Sum = Dune__exe__Sum

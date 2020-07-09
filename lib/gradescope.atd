@@ -1,0 +1,17 @@
+type gradescope = {
+  ?score: float option; (* optional, but required if not on each test case below. Overrides total of tests if specified. *)
+  ?execution_time: float option; (* optional, seconds *)
+  ?output: string option;  (* optional *)
+  ?visibility: string option; (* optional visibility setting *)
+  ?stdout_visibility: string option; (* optional stdout visibility setting *)
+  ?tests: result list option (* optional; but required if no top-level score *)
+}
+
+type result = {
+  ?score: float option; (* optional, but required if not on top level submission *)
+  ?max_score: float option; (* optional *)
+  ?name: string option; (* optional *)
+  ?number: string option; (* optional (will just be numbered in order of array if no number given) *)
+  ?output: string option; (* optional *)
+  ?visibility: string option; (* optional visibility setting *)
+}

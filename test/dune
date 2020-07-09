@@ -1,0 +1,3 @@
+(test
+ (name gradescope_ocaml)
+ (libraries atdgen ounit2 qcheck))
