@@ -1,4 +1,0 @@
-(executable
- (public_name gradescope_ocaml)
- (name main)
- (libraries gradescope atdgen ounit2 qcheck))
