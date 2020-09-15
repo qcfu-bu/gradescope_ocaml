@@ -21,6 +21,7 @@ let to_ounit_test_cell ?(verbose=verbose()) ?(long=long_tests())
       T.check_cell_exn cell ~long ~rand
         ~call:(fun s ->
             Raw.callback
+              ~colors:false
               ~verbose
               ~print_res:verbose
               ~print:Raw.print_std s);
