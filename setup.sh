@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
 
-apt install make
-apt install -y ocaml
-
 add-apt-repository ppa:avsm/ppa
 apt update
 
+apt install make
 apt install -y opam m4
 
 opam init --disable-sandboxing
+opam switch create 4.09.0
 
 eval `opam config env`
 
