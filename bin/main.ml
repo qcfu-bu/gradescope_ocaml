@@ -1,6 +1,6 @@
 open Gradescope    (* gradscope bindings *)
 open OUnit         (* ocaml unit testing *)
-open Sum           (* student submission *)
+module S = Student (* student submission *)
 
 (* reference implementation *)
 let rec sum = function
@@ -12,28 +12,28 @@ let test1 =
   Gradescope.to_ounit_test
     (QCheck.Test.make ~count:1000 ~name:"small_nat"
        QCheck.(list small_nat)
-       (fun l -> (Sum.sum l) = sum l))
+       (fun l -> (S.sum l) = sum l))
 
 (* testing sum of ints *)
 let test2 =
   Gradescope.to_ounit_test
     (QCheck.Test.make ~count:1000 ~name:"small_int"
        QCheck.(list small_int)
-       (fun l -> (Sum.sum l) = sum l))
+       (fun l -> (S.sum l) = sum l))
 
 (* testing sum of nats reversed *)
 let test3 =
   Gradescope.to_ounit_test
     (QCheck.Test.make ~count:1000 ~name:"rev small_nat"
        QCheck.(list small_nat)
-       (fun l -> (Sum.sum (List.rev l) = sum l)))
+       (fun l -> (S.sum (List.rev l) = sum l)))
 
 (* testing sum of ints reversed *)
 let test4 =
   Gradescope.to_ounit_test
     (QCheck.Test.make ~count:1000 ~name:"rev small_int"
        QCheck.(list small_int)
-       (fun l -> (Sum.sum (List.rev l) = sum l)))
+       (fun l -> (S.sum (List.rev l) = sum l)))
 
 (* annotate tests with meta information *)
 let tests = "sum" >::: [

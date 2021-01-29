@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cp /autograder/submission/*.ml /autograder/source/bin/sum.ml
+cp /autograder/submission/*.ml /autograder/source/bin/student.ml
 cd /autograder/source
 
 eval `opam config env --safe`
