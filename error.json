@@ -1,5 +1,5 @@
 {
   "score" : 0,
   "stdout_visibility" : "hidden",
-  "output" : "failed to compile"
+  "output" : "Failed to compile. Please make sure type signatures match given template."
 }
