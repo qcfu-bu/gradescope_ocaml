@@ -9,5 +9,5 @@ dune build bin/main.exe --profile release
 if [ $? -eq 0 ]; then
     dune exec bin/main.exe --profile release
 else
-    echo "{ \"score\" : 0, \"stdout_visibility\" : \"hidden\" }" > /autograder/results/results.json
+    cp ./error.json /autograder/results/results.json
 fi
