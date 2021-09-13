@@ -16,7 +16,7 @@ val to_ounit_test :
   ?verbose:bool ->
   ?long:bool ->
   ?rand:(Stdlib.Random.State.t) ->
-  (QCheck.Test.t) -> OUnit.test
+  (QCheck2.Test.t) -> OUnit.test
 
 
 (* path to write to *)

@@ -35,7 +35,7 @@ let to_ounit_test_cell ?(verbose=verbose()) ?(long=long_tests())
 
 
 (* wrapper for qcheck *)
-let to_ounit_test ?verbose ?long ?rand (QCheck.Test.Test c) =
+let to_ounit_test ?verbose ?long ?rand (QCheck2.Test.Test c) =
   to_ounit_test_cell ?verbose ?long ?rand c
 
 
