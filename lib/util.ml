@@ -10,3 +10,9 @@ let rec write_lines ls oc = match ls with
    Printf.fprintf oc "%s\n" s;
    write_lines ls oc
   | [] -> ()
+
+let list_of_string s =
+  List.of_seq (String.to_seq s)
+
+let filter_ws s =
+  List.filter (fun c -> not (String.contains " \r\n\t\012" c)) s
