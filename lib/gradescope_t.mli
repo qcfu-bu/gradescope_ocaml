@@ -1,5 +1,5 @@
 (* Auto-generated from "gradescope.atd" *)
-              [@@@ocaml.warning "-27-32-35-39"]
+[@@@ocaml.warning "-27-32-33-35-39"]
 
 type result = {
   score: float option;

@@ -3,7 +3,7 @@
 cp /autograder/submission/*.ml /autograder/source/bin/student.ml
 cd /autograder/source
 
-eval `opam config env --safe`
+eval $(opam env --switch=4.14.0 --safe)
 
 dune build bin/main.exe --profile release
 if [ $? -eq 0 ]; then

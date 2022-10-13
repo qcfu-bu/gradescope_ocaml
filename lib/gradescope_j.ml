@@ -1,5 +1,5 @@
 (* Auto-generated from "gradescope.atd" *)
-[@@@ocaml.warning "-27-32-35-39"]
+[@@@ocaml.warning "-27-32-33-35-39"]
 
 type result = Gradescope_t.result = {
   score: float option;
@@ -20,14 +20,14 @@ type gradescope = Gradescope_t.gradescope = {
 }
 
 let write__2 = (
-  Atdgen_runtime.Oj_run.write_option (
+  Atdgen_runtime.Oj_run.write_std_option (
     Yojson.Safe.write_string
   )
 )
 let string_of__2 ?(len = 1024) x =
-  let ob = Bi_outbuf.create len in
+  let ob = Buffer.create len in
   write__2 ob x;
-  Bi_outbuf.contents ob
+  Buffer.contents ob
 let read__2 = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
@@ -77,14 +77,14 @@ let read__2 = (
 let _2_of_string s =
   read__2 (Yojson.Safe.init_lexer ()) (Lexing.from_string s)
 let write__1 = (
-  Atdgen_runtime.Oj_run.write_option (
-    Yojson.Safe.write_float
+  Atdgen_runtime.Oj_run.write_std_option (
+    Yojson.Safe.write_std_float
   )
 )
 let string_of__1 ?(len = 1024) x =
-  let ob = Bi_outbuf.create len in
+  let ob = Buffer.create len in
   write__1 ob x;
-  Bi_outbuf.contents ob
+  Buffer.contents ob
 let read__1 = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
@@ -134,17 +134,17 @@ let read__1 = (
 let _1_of_string s =
   read__1 (Yojson.Safe.init_lexer ()) (Lexing.from_string s)
 let write_result : _ -> result -> _ = (
-  fun ob x ->
-    Bi_outbuf.add_char ob '{';
+  fun ob (x : result) ->
+    Buffer.add_char ob '{';
     let is_first = ref true in
     (match x.score with None -> () | Some x ->
       if !is_first then
         is_first := false
       else
-        Bi_outbuf.add_char ob ',';
-      Bi_outbuf.add_string ob "\"score\":";
+        Buffer.add_char ob ',';
+        Buffer.add_string ob "\"score\":";
       (
-        Yojson.Safe.write_float
+        Yojson.Safe.write_std_float
       )
         ob x;
     );
@@ -152,10 +152,10 @@ let write_result : _ -> result -> _ = (
       if !is_first then
         is_first := false
       else
-        Bi_outbuf.add_char ob ',';
-      Bi_outbuf.add_string ob "\"max_score\":";
+        Buffer.add_char ob ',';
+        Buffer.add_string ob "\"max_score\":";
       (
-        Yojson.Safe.write_float
+        Yojson.Safe.write_std_float
       )
         ob x;
     );
@@ -163,8 +163,8 @@ let write_result : _ -> result -> _ = (
       if !is_first then
         is_first := false
       else
-        Bi_outbuf.add_char ob ',';
-      Bi_outbuf.add_string ob "\"name\":";
+        Buffer.add_char ob ',';
+        Buffer.add_string ob "\"name\":";
       (
         Yojson.Safe.write_string
       )
@@ -174,8 +174,8 @@ let write_result : _ -> result -> _ = (
       if !is_first then
         is_first := false
       else
-        Bi_outbuf.add_char ob ',';
-      Bi_outbuf.add_string ob "\"number\":";
+        Buffer.add_char ob ',';
+        Buffer.add_string ob "\"number\":";
       (
         Yojson.Safe.write_string
       )
@@ -185,8 +185,8 @@ let write_result : _ -> result -> _ = (
       if !is_first then
         is_first := false
       else
-        Bi_outbuf.add_char ob ',';
-      Bi_outbuf.add_string ob "\"output\":";
+        Buffer.add_char ob ',';
+        Buffer.add_string ob "\"output\":";
       (
         Yojson.Safe.write_string
       )
@@ -196,19 +196,19 @@ let write_result : _ -> result -> _ = (
       if !is_first then
         is_first := false
       else
-        Bi_outbuf.add_char ob ',';
-      Bi_outbuf.add_string ob "\"visibility\":";
+        Buffer.add_char ob ',';
+        Buffer.add_string ob "\"visibility\":";
       (
         Yojson.Safe.write_string
       )
         ob x;
     );
-    Bi_outbuf.add_char ob '}';
+    Buffer.add_char ob '}';
 )
 let string_of_result ?(len = 1024) x =
-  let ob = Bi_outbuf.create len in
+  let ob = Buffer.create len in
   write_result ob x;
-  Bi_outbuf.contents ob
+  Buffer.contents ob
 let read_result = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
@@ -226,7 +226,7 @@ let read_result = (
       let f =
         fun s pos len ->
           if pos < 0 || len < 0 || pos + len > String.length s then
-            invalid_arg "out-of-bounds substring position or length";
+            invalid_arg (Printf.sprintf "out-of-bounds substring position or length: string = %S, requested position = %i, requested length = %i" s pos len);
           match len with
             | 4 -> (
                 if String.unsafe_get s pos = 'n' && String.unsafe_get s (pos+1) = 'a' && String.unsafe_get s (pos+2) = 'm' && String.unsafe_get s (pos+3) = 'e' then (
@@ -361,7 +361,7 @@ let read_result = (
         let f =
           fun s pos len ->
             if pos < 0 || len < 0 || pos + len > String.length s then
-              invalid_arg "out-of-bounds substring position or length";
+              invalid_arg (Printf.sprintf "out-of-bounds substring position or length: string = %S, requested position = %i, requested length = %i" s pos len);
             match len with
               | 4 -> (
                   if String.unsafe_get s pos = 'n' && String.unsafe_get s (pos+1) = 'a' && String.unsafe_get s (pos+2) = 'm' && String.unsafe_get s (pos+3) = 'e' then (
@@ -512,9 +512,9 @@ let write__3 = (
   )
 )
 let string_of__3 ?(len = 1024) x =
-  let ob = Bi_outbuf.create len in
+  let ob = Buffer.create len in
   write__3 ob x;
-  Bi_outbuf.contents ob
+  Buffer.contents ob
 let read__3 = (
   Atdgen_runtime.Oj_run.read_list (
     read_result
@@ -523,14 +523,14 @@ let read__3 = (
 let _3_of_string s =
   read__3 (Yojson.Safe.init_lexer ()) (Lexing.from_string s)
 let write__4 = (
-  Atdgen_runtime.Oj_run.write_option (
+  Atdgen_runtime.Oj_run.write_std_option (
     write__3
   )
 )
 let string_of__4 ?(len = 1024) x =
-  let ob = Bi_outbuf.create len in
+  let ob = Buffer.create len in
   write__4 ob x;
-  Bi_outbuf.contents ob
+  Buffer.contents ob
 let read__4 = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
@@ -580,17 +580,17 @@ let read__4 = (
 let _4_of_string s =
   read__4 (Yojson.Safe.init_lexer ()) (Lexing.from_string s)
 let write_gradescope : _ -> gradescope -> _ = (
-  fun ob x ->
-    Bi_outbuf.add_char ob '{';
+  fun ob (x : gradescope) ->
+    Buffer.add_char ob '{';
     let is_first = ref true in
     (match x.score with None -> () | Some x ->
       if !is_first then
         is_first := false
       else
-        Bi_outbuf.add_char ob ',';
-      Bi_outbuf.add_string ob "\"score\":";
+        Buffer.add_char ob ',';
+        Buffer.add_string ob "\"score\":";
       (
-        Yojson.Safe.write_float
+        Yojson.Safe.write_std_float
       )
         ob x;
     );
@@ -598,10 +598,10 @@ let write_gradescope : _ -> gradescope -> _ = (
       if !is_first then
         is_first := false
       else
-        Bi_outbuf.add_char ob ',';
-      Bi_outbuf.add_string ob "\"execution_time\":";
+        Buffer.add_char ob ',';
+        Buffer.add_string ob "\"execution_time\":";
       (
-        Yojson.Safe.write_float
+        Yojson.Safe.write_std_float
       )
         ob x;
     );
@@ -609,8 +609,8 @@ let write_gradescope : _ -> gradescope -> _ = (
       if !is_first then
         is_first := false
       else
-        Bi_outbuf.add_char ob ',';
-      Bi_outbuf.add_string ob "\"output\":";
+        Buffer.add_char ob ',';
+        Buffer.add_string ob "\"output\":";
       (
         Yojson.Safe.write_string
       )
@@ -620,8 +620,8 @@ let write_gradescope : _ -> gradescope -> _ = (
       if !is_first then
         is_first := false
       else
-        Bi_outbuf.add_char ob ',';
-      Bi_outbuf.add_string ob "\"visibility\":";
+        Buffer.add_char ob ',';
+        Buffer.add_string ob "\"visibility\":";
       (
         Yojson.Safe.write_string
       )
@@ -631,8 +631,8 @@ let write_gradescope : _ -> gradescope -> _ = (
       if !is_first then
         is_first := false
       else
-        Bi_outbuf.add_char ob ',';
-      Bi_outbuf.add_string ob "\"stdout_visibility\":";
+        Buffer.add_char ob ',';
+        Buffer.add_string ob "\"stdout_visibility\":";
       (
         Yojson.Safe.write_string
       )
@@ -642,19 +642,19 @@ let write_gradescope : _ -> gradescope -> _ = (
       if !is_first then
         is_first := false
       else
-        Bi_outbuf.add_char ob ',';
-      Bi_outbuf.add_string ob "\"tests\":";
+        Buffer.add_char ob ',';
+        Buffer.add_string ob "\"tests\":";
       (
         write__3
       )
         ob x;
     );
-    Bi_outbuf.add_char ob '}';
+    Buffer.add_char ob '}';
 )
 let string_of_gradescope ?(len = 1024) x =
-  let ob = Bi_outbuf.create len in
+  let ob = Buffer.create len in
   write_gradescope ob x;
-  Bi_outbuf.contents ob
+  Buffer.contents ob
 let read_gradescope = (
   fun p lb ->
     Yojson.Safe.read_space p lb;
@@ -672,7 +672,7 @@ let read_gradescope = (
       let f =
         fun s pos len ->
           if pos < 0 || len < 0 || pos + len > String.length s then
-            invalid_arg "out-of-bounds substring position or length";
+            invalid_arg (Printf.sprintf "out-of-bounds substring position or length: string = %S, requested position = %i, requested length = %i" s pos len);
           match len with
             | 5 -> (
                 match String.unsafe_get s pos with
@@ -807,7 +807,7 @@ let read_gradescope = (
         let f =
           fun s pos len ->
             if pos < 0 || len < 0 || pos + len > String.length s then
-              invalid_arg "out-of-bounds substring position or length";
+              invalid_arg (Printf.sprintf "out-of-bounds substring position or length: string = %S, requested position = %i, requested length = %i" s pos len);
             match len with
               | 5 -> (
                   match String.unsafe_get s pos with

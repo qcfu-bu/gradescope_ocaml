@@ -44,9 +44,10 @@ let tests = "sum" >::: [
   ]
 
 (* generate results.json *)
+(* can optionally output to stdout for debugging the grading script *)
 let _ =
   run_gradescope
     ~enable_timer:(true)
     ~tests:(Some tests)
-    stdout
-(* (open_out Gradescope.result_path) *)
+    (* stdout *)
+    (open_out Gradescope.result_path)
