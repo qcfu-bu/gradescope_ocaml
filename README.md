@@ -8,6 +8,8 @@
 * ounit2
 * qcheck
 
+Install dependencies with `opam install --deps-only .`
+
 ## Usage
 
 Annotate ounit tests with labels `@` ^ `ANNO`. If `ANNO` can be parsed into a floating point number, then it will be used as the weight for the test, otherwise it will be used to control test visibility.
